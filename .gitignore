@@ -1,24 +1,50 @@
-# Compiled class file
-*.class
+/**
+ * Class to handle apartment leases.
+ * 
+ * @author John Doe
+ * @date September 24, 2024
+ */
+public class LeaseMarte {
 
-# Log file
-*.log
+    // These hold lease info:
+    private String tenname = "XXX"; // Tenant's name
+    private int aptnumber = 0; // Where they live
+    private double monrent = 1000.0; // How much rent per month
+    private int leaseTerm = 12; // How long the lease lasts
 
-# BlueJ files
-*.ctxt
+    // Makes a new lease with basic settings
+    public LeaseMarte() {}
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+    // Here's how to get or change tenant name
+    public String getTenname() { return tenname; }
+    public void setTenname(String name) { tenname = name; }
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+    // For setting or getting apartment number
+    public int getAptnumber() { return aptnumber; }
+    public void setAptnumber(int number) { aptnumber = number; }
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+    // Rent stuff
+    public double getMonrent() { return monrent; }
+    public void setMonrent(double rent) {
+        if (rent >= 0) monrent = rent; // Can't have negative rent
+        else System.out.println("Rent must be non-negative.");
+    }
+
+    // Lease duration
+    public int getLeaseTerm() { return leaseTerm; }
+    public void setLeaseTerm(int term) {
+        if (term > 0) leaseTerm = term; // Can't have zero or negative term
+        else System.out.println("Lease must be positive.");
+    }
+
+    // If there's a pet, this ups the rent
+    public void addPetFee() {
+        monrent += 10;
+        explainPetPolicy();
+    }
+
+    // Why there's extra money for pets
+    public static void explainPetPolicy() {
+        System.out.println("Extra $10 for pets for extra cleaning.");
+    }
+}
